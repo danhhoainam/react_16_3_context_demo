@@ -6,10 +6,52 @@ import { roles, RoleContext } from './context/user-context';
 import RoleDisplay from './RoleDisplay';
 import Feeling from './Feeling';
 import { langs, LanguageContext } from './context/i18n-context';
+import Select from './select/Select';
 
 const StyledAppWrapper = styled.div`
   text-align: center;
-`
+`;
+
+const themeOptions = [
+  {
+    value: 'primary',
+    label: 'primary',
+  },
+  {
+    value: 'light',
+    label: 'light',
+  },
+  {
+    value: 'dark',
+    label: 'dark',
+  }
+];
+
+const roleOptions = [
+  {
+    value: 'anonymous',
+    label: 'label_anonymous',
+  },
+  {
+    value: 'user',
+    label: 'label_user',
+  },
+  {
+    value: 'admin',
+    label: 'label_admin',
+  }
+];
+
+const langOptions = [
+  {
+    value: 'vietnamese',
+    label: 'label_vietnamese',
+  },
+  {
+    value: 'english',
+    label: 'label_english',
+  }
+];
 
 class App extends Component {
   constructor(props) {
@@ -50,26 +92,15 @@ class App extends Component {
               <AppHeader />
 
               <p>
-                <select onChange={this.handleChangeThemes} value={this.state.themeName}>
-                  <option value="primary">Primary</option>
-                  <option value="light">Light</option>
-                  <option value="dark">Dark</option>
-                </select>
+                <Select onChange={this.handleChangeThemes} value={this.state.themeName} options={themeOptions} />
               </p>
 
               <p>
-                <select onChange={this.handleChangeRoles} value={this.state.roleName}>
-                  <option value="anonymous">Anonymous</option>
-                  <option value="user">Slave</option>
-                  <option value="admin">God</option>
-                </select>
+                <Select onChange={this.handleChangeRoles} value={this.state.roleName} options={roleOptions} />
               </p>
 
               <p>
-                <select onChange={this.handleChangeLanguages} value={this.state.lang}>
-                  <option value="vietnamese">Vietnam</option>
-                  <option value="english">English</option>
-                </select>
+                <Select onChange={this.handleChangeLanguages} value={this.state.lang} options={langOptions} />
               </p>
 
               <div>
